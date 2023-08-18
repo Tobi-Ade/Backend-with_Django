@@ -1,0 +1,30 @@
+<h2>Welcome to Todo App</h2>
+
+<form action="", method="POST">
+    {% csrf_token %}
+    <p>{{ form }}</p>
+    <input type="submit"/>
+</form>
+   
+
+    {% for task in tasks %}
+    <div>
+        <a href="{% url 'update_task' task.id %}">Update</a>
+        <a href="{% url 'delete_task' task.id %}">Delete</a>
+
+        {% if task.complete == True %}
+        <br>
+        <br>
+        <strike>{{ task }}</strike>
+        <br>
+        <br>
+
+        {% else %}
+        <p>{{ task }}</p>
+
+        {% endif %}
+
+    </div>
+    
+    {% endfor %}
+    
